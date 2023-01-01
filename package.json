@@ -13,9 +13,9 @@
   "author": "Ekaterina Belenskaia",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ekaterinaBelenskaia/Cypress_project/issues"
+ 
   },
-  "homepage": "https://github.com/ekaterinaBelenskaia/Cypress_project#readme",
+
   "devDependencies": {
     "chance": "^1.1.9",
     "cypress": "^12.1.0"

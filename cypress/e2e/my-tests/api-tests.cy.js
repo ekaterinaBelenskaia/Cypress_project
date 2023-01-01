@@ -7,7 +7,7 @@ describe('Test', () => {
 
 it('Positive: Create user', () => {
   cy.fixture('user').then(user => {
-    cy.request('POST', 'https://reqres.in/api/users', user).then(response => {
+    cy.request('POST', '/api/users', user).then(response => {
     expect(response.status).to.eq(201)
     expect(response.body).to.have.property('name', user.name)
     expect(response.body).to.have.property('job', user.job)  
@@ -46,7 +46,7 @@ testingData.forEach(({description, requestData}) => {
 
 it('Negative: Post request - login unsuccessful', () => {
 cy.request ({
-  method: 'POST', url: 'https://reqres.in/api/login' , failOnStatusCode: false, body:
+  method: 'POST', url: '/api/login' , failOnStatusCode: false, body:
   {
     "email": "peter@klaven"
   }

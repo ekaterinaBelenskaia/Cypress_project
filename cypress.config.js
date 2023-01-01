@@ -6,6 +6,7 @@ module.exports = defineConfig({
     "googleUrl": "https://store.google.com/us"
   },
   "e2e": {
+    "baseUrl": "https://reqres.in",
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
