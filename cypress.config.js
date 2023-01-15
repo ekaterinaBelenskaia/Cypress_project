@@ -1,7 +1,10 @@
-const { defineConfig } = require("cypress");
+// const { defineConfig } = require("cypress");
+import { defineConfig } from "cypress";
 
-module.exports = defineConfig({
+
+export default defineConfig({
   projectId: "i5iedp",
+  // defaultCommandTimeout: 10000,
   "env": {
     "googleUrl": "https://store.google.com/us"
   },
