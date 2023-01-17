@@ -1,15 +1,3 @@
-/*Используя метод age() библиотеки Chance сгенерируйте случайный возраст.
-https://chancejs.com/person/age.html
-Выведите в консоль, кем является человек с полученным возрастом (возможные варианты child, teen, adult, senior).
-
-Необходимо решить задачу тремя способами:
-используя оператор условия if
-https://www.w3schools.com/js/js_if_else.asp
-используя switch
-https://www.w3schools.com/js/js_switch.asp
-используя тернарный оператор “?”
-https://learn.javascript.ru/ifelse */
-
 import Chance from "chance";
 
 let randomAge = Chance().age();
@@ -17,45 +5,53 @@ console.log(randomAge);
 
 // 1 способ
 
-function checkAge() {
-    if (randomAge >= 0 && randomAge <= 12) {
-    console.log("It's a child")
+function checkAge(randomAge) {
+
+if (randomAge >= 0 && randomAge <= 12) {
+    return "It's a child";
 } else if (randomAge >= 13 && randomAge <= 17) {
-    console.log("It's a teen") 
+    return "It's a teen";
 } else if (randomAge >= 18 && randomAge <= 65) {
-    console.log("It's an adult")
+    return "It's an adult";
 } else if (randomAge >= 66 && randomAge <= 100) {
-    console.log("You are a senior!")
+    return "It's a senior";
 } else {
-    console.log("You are a centerian!")
+    return "It's a centerian";
 }
 }
-checkAge(randomAge);
+
+console.log(checkAge(randomAge));
 
 // 2 способ
 
-function checkAge() {
-switch(randomAge) {
-    case randomAge >= 0 && randomAge <= 12:
-        console.log("It's a child");
-      break;
-    case randomAge >= 13 && randomAge <= 17:
-        console.log("It's a teen");
-      break;
-    case randomAge >= 18 && randomAge <= 65:
-        console.log("It's an adult");
-      break;
-    case randomAge >= 66 && randomAge <= 100:
-        console.log("You are senior");
-      break;  
-}
-}
-checkAge()
+function checkAge(randomAge) {
+    switch(true) {
+        case randomAge >= 0 && randomAge <= 12:
+           return "It's a child";
+          break;
+        case randomAge >= 13 && randomAge <= 17:
+            return "It's a teen";
+          break;
+        case randomAge >= 18 && randomAge <= 65:
+            return "It's an adult";
+          break;
+        case randomAge >= 66 && randomAge <= 100:
+            return "It's senior";
+          break;  
+        default:
+            return "It's a centerian";
+    }
+    }
+
+    console.log(checkAge(randomAge))
+
 
 //3 способ
 
-let personAge = (randomAge >= 0 && randomAge <= 12) ? console.log("It's a child") :
-(randomAge >= 13 && randomAge <= 17) ? console.log("It's a teen") :
-(randomAge >= 18 && randomAge <= 65) ? console.log("It's an adult") :
-(randomAge >= 66 && randomAge <= 100) ? console.log("You are a senior!") :
-"";
+let personAge = (randomAge >= 0 && randomAge <= 12) ? "It's a child" :
+(randomAge >= 13 && randomAge <= 17) ? "It's a teen" :
+(randomAge >= 18 && randomAge <= 65) ? "It's an adult" :
+(randomAge >= 66 && randomAge <= 100) ? "It's senior" :
+"It's a centerian";
+
+console.log(personAge)
