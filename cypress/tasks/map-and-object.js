@@ -1,3 +1,4 @@
+
 //задание 1
 
 let planetsArray = [
@@ -66,7 +67,6 @@ const mergedMap = new Map([[planetsMap, newPlanetMap]]);
 console.log("planetsMap - ", planetsMap);
 console.log("newPlanetMap - ", newPlanetMap);
 console.log("MergedMap - ", mergedMap);
-
 // задание 8
 
 let planet = {planet: "Mercury", radius: 2440, density: 5.43, distance: 0.395}

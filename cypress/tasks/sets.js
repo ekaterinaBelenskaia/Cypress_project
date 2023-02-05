@@ -1,5 +1,5 @@
 import Chance from "chance";
-import { isSuperSet, union, intersection, difference } from "../Cypress-js/cypress/utils/helper.js"
+import { isSuperSet, union, intersection, difference } from "../utils/helper.js"
 
 let chance = Chance();
 
