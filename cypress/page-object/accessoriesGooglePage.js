@@ -7,11 +7,10 @@ class AccessoriesGooglePage {
         return cy.get('div[class="mqn2-aih ng-scope"]')
     }
 
-    selectRandomProduct(jsonData) {
-        let productsName = jsonData.map(productsName => ({ value: productsName.name }));
+    selectProduct(productName) {
         const arrOfProductNames = [];
-        for (const product of productsName) {
-            arrOfProductNames.push(product.value);
+        for (const product of productName) {
+            arrOfProductNames.push(product.name);
         }
         const randomName = Chance().pickone(arrOfProductNames);
         this.accessoriesPage.contains(randomName).click();

@@ -21,19 +21,15 @@ class CartPage {
     }
 
     checkProductDetails(names) {
-        this.productName.then(($btn) => {
-            if ($btn.text().includes(names[0].name)) {
-                this.quantityArrowIcon.find('option:selected').should('have.text', '1');
-                this.productPrice.contains(names[0].price);
-                this.subtotalPrice.contains(names[0].price);
-                this.productSection.children().should('have.length', 1);
-            } else {
-                this.productName.contains(names[1].name);
-                this.quantityArrowIcon.find('option:selected').should('have.text', '1');
-                this.productPrice.contains(names[1].price);
-                this.subtotalPrice.contains(names[1].price);
-                this.productSection.children().should('have.length', 1);
-            }
+        names.forEach((el) => {
+            this.productName.then(($btn) => {
+                if ($btn.text().includes(el.name)) {
+                    this.quantityArrowIcon.find('option:selected').should('have.text', '1');
+                    this.productPrice.contains(el.price);
+                    this.subtotalPrice.contains(el.price);
+                    this.productSection.children().should('have.length', 1);
+                }
+            })
         })
     }
 
@@ -59,15 +55,13 @@ class CartPage {
         this.pickListValues.select(randomNumber);
         this.quantityArrowIcon.find('option:selected').should('have.text', randomNumber);
 
-        this.productName.then(($txt) => {
-            if ($txt.text().includes(newData[0].name)) {
-                let sum = ((newData[0].price).replace('$', '') * randomNumber).toFixed(2);
-                this.subtotalPrice.contains(sum);
-            } else {
-                this.productName.contains(newData[1].name);
-                let sum2 = ((newData[1].price).replace('$', '') * randomNumber).toFixed(2);
-                this.subtotalPrice.contains(sum2);
-            }
+        newData.forEach((el) => {
+            this.productName.then(($btn) => {
+                if ($btn.text().includes(el.name)) {
+                    let sum = ((el.price).replace('$', '') * randomNumber).toFixed(2);
+                    this.subtotalPrice.contains(sum);
+                }
+            })
         })
     }
 }

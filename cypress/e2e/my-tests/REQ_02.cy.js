@@ -20,8 +20,8 @@ beforeEach(() => {
 it('Verify user is able to change the quantity of products in the card', function () {
 
     AccessoriesGooglePage.open();
-    AccessoriesGooglePage.selectRandomProduct(this.data);
-    ProductPage.checkButtonsOnPage(this.data);
+    AccessoriesGooglePage.selectProduct(this.data);
+    ProductPage.addProductToCart(this.data);
     CartPage.open();
     CartPage.checkProductDetails(this.data);
     CartPage.checkChangedTotalSum(this.data)

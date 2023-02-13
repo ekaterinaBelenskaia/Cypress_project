@@ -21,8 +21,8 @@ beforeEach(() => {
 it('Verify user is able to add single and multiple color product to the card', function () {
 
   AccessoriesGooglePage.open();
-  AccessoriesGooglePage.selectRandomProduct(this.data);
-  ProductPage.checkButtonsOnPage(this.data);
+  AccessoriesGooglePage.selectProduct(this.data);
+  ProductPage.addProductToCart(this.data);
   CartPage.checkProductDetails(this.data);
   CartPage.removeProductFromCard();
 

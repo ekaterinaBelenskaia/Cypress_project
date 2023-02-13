@@ -5,7 +5,7 @@ class ProductPage {
         return cy.get('div[class="X4eHfd tS5yEe"]');
     }
 
-    checkButtonsOnPage(colors) {
+    addProductToCart(colors) {
         this.bottomBar.then(($body) => {
             let text = $body.text();
             if (text.includes('Buy')) {
