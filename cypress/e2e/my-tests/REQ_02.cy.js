@@ -18,12 +18,14 @@ beforeEach(() => {
 })
 
 it('Verify user is able to change the quantity of products in the card', function () {
-
     AccessoriesGooglePage.open();
-    AccessoriesGooglePage.selectProduct(this.data);
+    const randomProduct = Chance().pickone(this.data).name;
+    AccessoriesGooglePage.selectProduct(randomProduct);
     ProductPage.addProductToCart(this.data);
     CartPage.open();
     CartPage.checkProductDetails(this.data);
-    CartPage.checkChangedTotalSum(this.data)
-  
+    let randomNumber = chance.integer({ min: 1, max: 5 }).toString();
+    CartPage.pickListValues.select(randomNumber);
+    CartPage.quantityArrowIcon.find('option:selected').should('have.text', randomNumber);
+    CartPage.checkChangedSubtotalPrice(this.data, randomNumber)
   })

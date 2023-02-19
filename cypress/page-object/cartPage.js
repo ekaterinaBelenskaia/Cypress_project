@@ -20,8 +20,8 @@ class CartPage {
         return cy.get('section[class="UQIaqe"]');
     }
 
-    checkProductDetails(names) {
-        names.forEach((el) => {
+    checkProductDetails(productDetails) {
+        productDetails.forEach((el) => {
             this.productName.then(($btn) => {
                 if ($btn.text().includes(el.name)) {
                     this.quantityArrowIcon.find('option:selected').should('have.text', '1');
@@ -49,13 +49,8 @@ class CartPage {
         return cy.get('select');
     }
 
-    checkChangedTotalSum(newData) {
-
-        let randomNumber = chance.integer({ min: 1, max: 5 }).toString();
-        this.pickListValues.select(randomNumber);
-        this.quantityArrowIcon.find('option:selected').should('have.text', randomNumber);
-
-        newData.forEach((el) => {
+    checkChangedSubtotalPrice(productData, randomNumber) {
+        productData.forEach((el) => {
             this.productName.then(($btn) => {
                 if ($btn.text().includes(el.name)) {
                     let sum = ((el.price).replace('$', '') * randomNumber).toFixed(2);

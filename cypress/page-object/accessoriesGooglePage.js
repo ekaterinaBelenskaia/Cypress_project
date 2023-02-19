@@ -8,14 +8,9 @@ class AccessoriesGooglePage {
     }
 
     selectProduct(productName) {
-        const arrOfProductNames = [];
-        for (const product of productName) {
-            arrOfProductNames.push(product.name);
-        }
-        const randomName = Chance().pickone(arrOfProductNames);
-        this.accessoriesPage.contains(randomName).click();
-        cy.wait(2000);
+        this.accessoriesPage.contains(productName).click();
     }
 }
+
 
 export default new AccessoriesGooglePage();

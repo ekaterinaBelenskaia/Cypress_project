@@ -19,11 +19,10 @@ beforeEach(() => {
 })
 
 it('Verify user is able to add single and multiple color product to the card', function () {
-
   AccessoriesGooglePage.open();
-  AccessoriesGooglePage.selectProduct(this.data);
+  const randomProduct = Chance().pickone(this.data).name;
+  AccessoriesGooglePage.selectProduct(randomProduct);
   ProductPage.addProductToCart(this.data);
   CartPage.checkProductDetails(this.data);
   CartPage.removeProductFromCard();
-
 })
