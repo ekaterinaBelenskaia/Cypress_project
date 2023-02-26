@@ -4,7 +4,7 @@ class AccessoriesGooglePage {
     }
 
     get accessoriesPage() {
-        return cy.get('div[class="mqn2-aih ng-scope"]')
+        return cy.get('div[class="mqn2-aih ng-scope"]');
     }
 
     selectProduct(productName) {

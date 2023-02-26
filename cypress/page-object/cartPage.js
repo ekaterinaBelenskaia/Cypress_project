@@ -5,59 +5,36 @@ class CartPage {
     }
 
     get productName() {
-        return cy.get('a[class="XNnpOb"]');
+       return cy.get('[data-details-page-docid]');
     }
     get quantityArrowIcon() {
-        return cy.get('section[class="Jm2qx"]');
+        return cy.get('[aria-label="Product Quantity"]');
     }
     get productPrice() {
-        return cy.get('p[class="GehUpe"]');
+        return cy.get('[data-test-line-item-price]');
     }
     get subtotalPrice() {
         return cy.get('[data-test-price-subtotal]');
     }
     get productSection() {
-        return cy.get('section[class="UQIaqe"]');
+        return cy.get('[data-test-line-item-container]');
     }
-
-    checkProductDetails(productDetails) {
-        productDetails.forEach((el) => {
-            this.productName.then(($btn) => {
-                if ($btn.text().includes(el.name)) {
-                    this.quantityArrowIcon.find('option:selected').should('have.text', '1');
-                    this.productPrice.contains(el.price);
-                    this.subtotalPrice.contains(el.price);
-                    this.productSection.children().should('have.length', 1);
-                }
-            })
-        })
-    }
-
-    get deleteButton() {
-        return cy.get('section[class="JpKBkb"]');
-    }
+    
     get cartEmptyText() {
-        return cy.get('section[class="CPFty"]');
+        return cy.get('[data-test-cart-empty-text]');
+    }
+
+    checkColor(productColor) {
+        this.productName.contains(productColor);
     }
 
     removeProductFromCard() {
-        this.deleteButton.contains('Remove').click();
+        this.productSection.contains('Remove').click();
         this.cartEmptyText.contains("Your cart is empty");
     }
 
     get pickListValues() {
         return cy.get('select');
-    }
-
-    checkChangedSubtotalPrice(productData, randomNumber) {
-        productData.forEach((el) => {
-            this.productName.then(($btn) => {
-                if ($btn.text().includes(el.name)) {
-                    let sum = ((el.price).replace('$', '') * randomNumber).toFixed(2);
-                    this.subtotalPrice.contains(sum);
-                }
-            })
-        })
     }
 }
 export default new CartPage();
