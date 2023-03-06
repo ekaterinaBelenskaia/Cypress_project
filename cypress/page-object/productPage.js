@@ -1,7 +1,12 @@
+
 class ProductPage {
 
-    get bottomBar() {
-        return cy.get('div[class="X4eHfd tS5yEe"]');
+    get button() {
+        return cy.get('[data-test="financing"]').parent().eq(1).next().find("button")
+    }
+    
+    selectProductColor(clrOption) {
+        cy.get(`button[data-docid="${clrOption}"]`).click();
     }
 
     get colorLabel() {

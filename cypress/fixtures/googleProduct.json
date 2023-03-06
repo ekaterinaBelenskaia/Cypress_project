@@ -2,7 +2,7 @@
     {
         "name": "Pixel 7 Case",
         "price": "$29.99",
-        "buttons": ["button[data-docid='_pixel_7_case_obsidian']", "button[data-docid='_pixel_7_case_chalk']"]
+        "colorsOption": ["_pixel_7_case_obsidian", "_pixel_7_case_chalk"]
     },
     {
         "name": "Case-Mate Tough Clear Case for Pixel 7 Pro",

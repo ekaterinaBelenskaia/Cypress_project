@@ -21,23 +21,20 @@ describe('User is able to change the quantity of products in the card', () => {
       AccessoriesGooglePage.selectProduct(product.name);
 
       cy.log('And user adds product to the cart')
-      ProductPage.bottomBar.then(($body) => {
+      ProductPage.button.then(($body) => {
         let text = $body.text();
         if (text.includes('Buy')) {
-          cy.wait(2000);
-
           cy.log('And user adds multiple color product to the cart')
-          ProductPage.bottomBar.contains('Buy').click();
+          ProductPage.button.contains('Buy').click();
 
           cy.log('And user select product color and adds product to the cart')
-          let colorButton = Chance().pickone(product.buttons);
-          cy.get(colorButton).click();
-          ProductPage.addToCart();
+          let colorOption = Chance().pickone(product.colorsOption);
+          ProductPage.selectProductColor(colorOption)
 
+          ProductPage.addToCart();
         } else if (text.includes('Add to cart')) {
           cy.log('And user adds single color product to the cart')
-          ProductPage.bottomBar.contains('Add to cart').click();
-          cy.wait(2000);
+          ProductPage.button.contains('Add to cart').click()
         } else {
           throw new Error("Probably the product is out of stock. Add a new product to fixture");
         }
@@ -53,16 +50,15 @@ describe('User is able to change the quantity of products in the card', () => {
     CartPage.productSection.should('have.length', products.length);
 
     cy.log('WHEN User changes the number of products in the cart')
-    let randomNumber = chance.integer({ min: 1, max: 5 }).toString();
-    CartPage.quantityArrowIcon.eq(0).select(randomNumber);
-    CartPage.quantityArrowIcon.eq(1).select(randomNumber);
+    products.map(product => product.quantity = chance.integer({ min: 1, max: 3 }).toString())
+
+    CartPage.quantityArrowIcon.eq(0).select(products[0].quantity);
+    CartPage.quantityArrowIcon.eq(1).select(products[1].quantity);
 
     cy.log('Then subtotal price is correct')
-    let subtotalPrice = 0;
-    products.forEach(product => {
-      let priceWithout$ = product.price.replace('$', '');
-      subtotalPrice += Number(priceWithout$) * randomNumber;
-    })
+    const subtotalPrice = products.reduce((accumulator, product) =>
+      accumulator + Number(product.price.replace('$', '')) * product.quantity, 0
+    )
     CartPage.subtotalPrice.contains(subtotalPrice);
   })
 })
